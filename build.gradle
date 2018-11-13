@@ -1,6 +1,7 @@
 
-apply plugin: 'java-library'
-
+//apply plugin: 'java-library'
+apply plugin: 'java'
+apply plugin: 'application'
 
 repositories {
  
@@ -10,6 +11,20 @@ repositories {
 tasks.withType(JavaCompile){
     options.encoding = 'UTF-8'
 }
+
+jar{
+    
+    version = 1.0
+    mainClassName = 'jdbc_pool_c3p0_study.Main'
+    baseName = 'Erp'
+    appendix = 'bin'
+    manifest{
+        attributes 'Title':baseName, 'Version':version, 'Main':mainClassName
+    }
+    dependsOn configurations.runtime
+
+}
+
 
 dependencies {
    // api 'org.apache.commons:commons-math3:3.6.1'
